@@ -84,4 +84,20 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TDD Approach Test Case>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void displaying_total_order_cost_after_selection_of_all_items(){
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Vegetable soup", 129);
+
+        int totalOrderCost = 119+269+129;
+        assertEquals(totalOrderCost,restaurant.orderCost(restaurant.ItemByString("Sweet corn soup"),
+                restaurant.ItemByString("Vegetable soup"),restaurant.ItemByString("Vegetable lasagne")));
+    }
 }
