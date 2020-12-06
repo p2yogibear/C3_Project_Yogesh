@@ -43,11 +43,21 @@ public class Restaurant {
         return null;
     }
 
+    public Item ItemByString(String itemName){
+        Item itemSelected = findItemByName(itemName);
+        return itemSelected;
+    }
+
     public void addToMenu(String name, int price) {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
-    
+
+    public int orderCost(Item item1, Item item2, Item item3){
+        int cost = item1.hashCode() + item2.hashCode() + item3.hashCode();
+        return cost;
+    }
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
